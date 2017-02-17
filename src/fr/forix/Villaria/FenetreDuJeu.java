@@ -472,11 +472,9 @@ public class FenetreDuJeu {
         public void actionPerformed(ActionEvent e) {
 
             if(combo.getSelectedItem() == "Maison 500$"){
-                if(argent >= 500) {
+                if(argent > 500L) {
                     if (ouvriers >= 1) {
                         if (ouvriermax == ouvriers) {
-                            System.out.println("dans le normal");
-
                             bar.setVisible(true);
                             maisont = new Thread() {
 
