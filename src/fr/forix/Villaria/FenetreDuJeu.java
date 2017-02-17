@@ -13,7 +13,7 @@ public class FenetreDuJeu {
 
     public static Long heure=0L,minute=0L,jour=1L;
 
-    public static Long ouvriers=2L, TempsConstructionMaison=1000L, TempsConstructionMagasin=1000L, TempsConstructionImmeuble=2000L;
+    public static Long ouvriers=2L, TempsConstructionMaison=0L, TempsConstructionMagasin=1000L, TempsConstructionImmeuble=2000L;
 
     public static Long ouvriermax=2L;
 
@@ -472,7 +472,7 @@ public class FenetreDuJeu {
         public void actionPerformed(ActionEvent e) {
 
             if(combo.getSelectedItem() == "Maison 500$"){
-                if(argent > 500L) {
+                if(argent >= 500) {
                     if (ouvriers >= 1) {
                         if (ouvriermax == ouvriers) {
                             bar.setVisible(true);
@@ -549,7 +549,7 @@ public class FenetreDuJeu {
                         jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
 
                     }
-                } else {
+                }else {
                     System.out.println("pas assez d'argent");
                     JOptionPane jop3 = new JOptionPane();
                     ImageIcon img = new ImageIcon("finance-634901_960_720.png");
@@ -913,12 +913,12 @@ public class FenetreDuJeu {
                         jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
 
                     }
+                }else{
+                    System.out.println("pas assez d'argent");
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Pas assez d'argent", "Erreur", JOptionPane.ERROR_MESSAGE, img);
                 }
-            }else{
-                System.out.println("pas assez d'argent");
-                JOptionPane jop3 = new JOptionPane();
-                ImageIcon img = new ImageIcon("finance-634901_960_720.png");
-                jop3.showMessageDialog(null, "Pas assez d'argent", "Erreur", JOptionPane.ERROR_MESSAGE, img);
             }
         }
     }
