@@ -422,6 +422,7 @@ public class FenetreDuJeu {
         rmaison = (maisons * maisonr);
         revenustot = (rmaison + rimmeuble + rmagasin + rCC + rindustrie);
         revenustotal.setText("Revenus journalier : " + revenustot);
+        System.out.println("poulet braisé");
     }
 
     public void immeuble(){
