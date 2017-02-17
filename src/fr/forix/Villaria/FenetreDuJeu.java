@@ -415,58 +415,42 @@ public class FenetreDuJeu {
 
     public void maison(){
         maisons++;
-        habitants = habitants + 10;
+        habitants += 10;
         maison.setText("Maisons: " + maisons);
         nbrh.setText("Habitants : " + habitants);
+        argent -= 500;
         habitants = habitants + 30;
         rmaison = (maisons * maisonr);
         revenustot = (rmaison + rimmeuble + rmagasin + rCC + rindustrie);
         revenustotal.setText("Revenus journalier : " + revenustot);
-        System.out.println("poulet braisé");
-        System.out.println(maisons);
     }
 
     public void immeuble(){
         immeubles++;
-        habitants = habitants + 100;
+        habitants += 100;
         immeuble.setText("Immeubles: " + immeubles);
-        System.out.println(immeuble);
-        argent = argent - 5000;
-        System.out.println(argent);
-        argentD.setText(argent + " $");
         nbrh.setText("Habitants : " + habitants);
+        argent -= 5000;
+        argentD.setText(argent + " $");
         rimmeuble = (immeubles * immeubler);
         revenustot = (rmaison + rimmeuble + rmagasin + rCC + rindustrie);
         revenustotal.setText("Revenus journalier : " + revenustot);
     }
 
     public void magasin(){
-        if(argent >= 600){
-            magasins++;
-            magasin.setText("Magasins: "+magasins);
-            System.out.println(magasins);
-            argent = argent - 600;
-            System.out.println(argent);
-            argentD.setText(argent+" $");
-
-            rmagasin=(magasins*magasinr);
-            revenustot=(rmaison+rimmeuble+rmagasin+rCC+rindustrie);
-            revenustotal.setText("Revenus journalier : "+revenustot);
-        }
-        else{
-            System.out.println("pas assez d'argent");
-            JOptionPane jop3 = new JOptionPane();
-            ImageIcon img = new ImageIcon("finance-634901_960_720.png");
-            jop3.showMessageDialog(null, "Pas assez d'argent", "Erreur", JOptionPane.ERROR_MESSAGE, img);
-        }
+        magasins++;
+        magasin.setText("Magasins: "+magasins);
+        argent -= 600;
+        argentD.setText(argent+" $");
+        rmagasin=(magasins*magasinr);
+        revenustot=(rmaison+rimmeuble+rmagasin+rCC+rindustrie);
+        revenustotal.setText("Revenus journalier : "+revenustot);
     }
 
     public void CC(){
         CC++;
         CentreCommercial.setText("Centres Commercials: "+CC);
-        System.out.println(CC);
-        argent = argent - 10000;
-        System.out.println(argent);
+        argent -= 10000;
         argentD.setText(argent+" $");
         rCC=(CC*CCr);
         revenustot=(rmaison+rimmeuble+rmagasin+rCC+rindustrie);
@@ -476,9 +460,7 @@ public class FenetreDuJeu {
     public void industrie(){
         industries++;
         industrie.setText("Industries: "+industries);
-        System.out.println(industries);
-        argent = argent - 400;
-        System.out.println(argent);
+        argent -= 400;
         argentD.setText(argent+" $");
         rindustrie=(industries*industrier);
         revenustot=(rmaison+rimmeuble+rmagasin+rCC+rindustrie);
@@ -672,84 +654,90 @@ public class FenetreDuJeu {
             }
 
             if(combo.getSelectedItem() == "Magasin 600$"){
-                if(ouvriers >= 1) {
-                    if (ouvriermax == ouvriers) {
-                        System.out.println("dans le normal");
+                if(argent >= 600) {
+                    if (ouvriers >= 1) {
+                        if (ouvriermax == ouvriers) {
+                            System.out.println("dans le normal");
 
-                        bar.setVisible(true);
-                        magasint = new Thread() {
+                            bar.setVisible(true);
+                            magasint = new Thread() {
 
-                            public void run() {
+                                public void run() {
 
-                                argent -= 500;
-                                ouvriers -= 1;
-                                Louvriers.setText("Ouvriers disponible: "+ouvriers);
-                                argentD.setText(argent + " $");
+                                    argent -= 500;
+                                    ouvriers -= 1;
+                                    Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                    argentD.setText(argent + " $");
 
-                                for (int val = 0; val <= 500; val++) {
-                                    bar.setValue(val);
+                                    for (int val = 0; val <= 500; val++) {
+                                        bar.setValue(val);
 
-                                    try {
-                                        maisont.sleep(10);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
+                                        try {
+                                            maisont.sleep(10);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
                                     }
+                                    bar.setValue(0);
+                                    ouvriers += 1;
+                                    Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                    magasin();
+
+                                    bar.setVisible(false);
                                 }
-                                bar.setValue(0);
-                                ouvriers += 1;
-                                Louvriers.setText("Ouvriers disponible: "+ouvriers);
-                                magasin();
+                            };
+                            magasint.start();
 
-                                bar.setVisible(false);
-                            }
-                        };
-                        magasint.start();
+                        } else {
+                            String bruh;
+                            System.out.println("dans le else");
+                            JProgressBar bor = new JProgressBar();
+                            bor.setMinimum(0);
+                            bor.setMaximum(500);
+                            bor.setBounds(80, b, 250, 20);
+                            b += 30;
+                            Ouvriers.add(bor);
 
-                    } else{
-                        String bruh;
-                        System.out.println("dans le else");
-                        JProgressBar bor = new JProgressBar();
-                        bor.setMinimum(0);
-                        bor.setMaximum(500);
-                        bor.setBounds(80, b, 250, 20);
-                        b += 30;
-                        Ouvriers.add(bor);
+                            magasint1 = new Thread() {
 
-                        magasint1 = new Thread() {
+                                public void run() {
 
-                            public void run() {
+                                    argent -= 500;
+                                    ouvriers -= 1;
+                                    Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                    argentD.setText(argent + " $");
 
-                                argent -= 500;
-                                ouvriers -= 1;
-                                Louvriers.setText("Ouvriers disponible: "+ouvriers);
-                                argentD.setText(argent + " $");
+                                    for (int val = 0; val <= 500; val++) {
+                                        bor.setValue(val);
 
-                                for (int val = 0; val <= 500; val++) {
-                                    bor.setValue(val);
-
-                                    try {
-                                        maisont.sleep(10);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
+                                        try {
+                                            maisont.sleep(10);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
                                     }
-                                }
-                                bor.setValue(0);
-                                ouvriers += 1;
-                                Louvriers.setText("Ouvriers disponible: "+ouvriers);
-                                magasin();
+                                    bor.setValue(0);
+                                    ouvriers += 1;
+                                    Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                    magasin();
 
-                                bor.setVisible(false);
-                            }
-                        };
-                        magasint1.start();
+                                    bor.setVisible(false);
+                                }
+                            };
+                            magasint1.start();
+
+                        }
+
+                    } else {
+                        JOptionPane jop3 = new JOptionPane();
+                        ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                        jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
 
                     }
-
-                } else {
+                }else{
                     JOptionPane jop3 = new JOptionPane();
                     ImageIcon img = new ImageIcon("finance-634901_960_720.png");
-                    jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
-
+                    jop3.showMessageDialog(null, "Pas assez d'argent", "Erreur", JOptionPane.ERROR_MESSAGE, img);
                 }
             }
 
