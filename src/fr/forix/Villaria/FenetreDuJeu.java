@@ -3,8 +3,6 @@ package fr.forix.Villaria;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.*;
 
@@ -13,12 +11,12 @@ public class FenetreDuJeu {
 
     public static Long heure=0L,minute=0L,jour=1L;
 
-    public static Long ouvriers=2L, TempsConstructionMaison=0L, TempsConstructionMagasin=1000L, TempsConstructionImmeuble=2000L;
+    public static Long ouvriers=2L;
 
     public static Long ouvriermax=2L;
 
     public static double diamantsD = 0;
-    public static Long argent = 10000L, nourriture = 500L, habitants = 1000L, charbon=0L, fer=0L, pétrol=0L, diamants=10L;
+    public static Long argent = 10000L, nourriture = 500L, habitants = 0L, charbon=0L, fer=0L, pétrol=0L, diamants=10L;
     public static Long maisons=0L, immeubles=0L, magasins=0L, CC=0L, industries=0L;
     public static Long parceolien=0L, centralecharbon=0L, centralefioul=0L, parcsolaire=0L, centralenucleaire=0L, chateau=0L, STP=0L, STG=0L, ferme=0L;
     public static Long maisonr=50L, immeubler=300L, magasinr=50L, CCr=1000L, industrier=500L;
@@ -635,18 +633,18 @@ public class FenetreDuJeu {
 
                         } else {
                             JOptionPane jop3 = new JOptionPane();
-                            ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                            ImageIcon img = new ImageIcon("C:/Users/Games/Villaria/ressources/dollar.jpg");
                             jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
 
                         }
                     } else {
                         JOptionPane jop3 = new JOptionPane();
-                        ImageIcon img = new ImageIcon("C:/Users/Czapl/Desktop/Dollar1.jpg");
+                        ImageIcon img = new ImageIcon("C:/Users/Games/Villaria/ressources/dollar.jpg");
                         jop3.showMessageDialog(null, "Pas assez d'argent", "Erreur", JOptionPane.ERROR_MESSAGE, img);
                     }
                 } else {
                     JOptionPane jop3 = new JOptionPane();
-                    ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                    ImageIcon img = new ImageIcon("C:/Users/Games/Villaria/ressources/dollar.jpg");
                     jop3.showMessageDialog(null, "Vous avez besoin de minimum 1000 habitants pour construire un immeuble", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
                 }
             }
