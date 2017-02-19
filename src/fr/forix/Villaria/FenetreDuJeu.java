@@ -16,10 +16,11 @@ public class FenetreDuJeu {
     public static Long ouvriermax=2L;
 
     public static double diamantsD = 0;
-    public static Long argent = 10000L, nourriture = 500L, habitants = 0L, charbon=0L, fer=0L, pétrol=0L, diamants=10L;
+    public static Long argent = 10000L, nourriture = 500L, habitants = 1000L, charbon=0L, fer=0L, pétrol=0L, diamants=10L, planches=0L, béton=0L;
     public static Long maisons=0L, immeubles=0L, magasins=0L, CC=0L, industries=0L;
     public static Long parceolien=0L, centralecharbon=0L, centralefioul=0L, parcsolaire=0L, centralenucleaire=0L, chateau=0L, STP=0L, STG=0L, ferme=0L;
     public static Long maisonr=50L, immeubler=300L, magasinr=50L, CCr=1000L, industrier=500L;
+    public static Long silocharbon=0L, silofer=0L, reservoirpetrol=0L, coffrediamant=0L;
 
     public static Long rmaison=(maisons*maisonr), rimmeuble=(immeubles*immeubler), rmagasin=(magasins*magasinr), rCC=(CC*CCr), rindustrie=(industries*industrier);
     public static Long minecharbon=0L, minefer=0L, puitpetrole=0L, raffinerie=0L, usinechimique=0L;
@@ -55,7 +56,7 @@ public class FenetreDuJeu {
     public static JLabel F = new JLabel("Fermes: "+ferme);
     public static JLabel revenus = new JLabel("Revenus");
     public static JLabel revenustotal = new JLabel("Revenus journalier : "+revenustot);
-    public static JLabel nbrh = new JLabel("Habitants : "+habitants);
+    public static JLabel nbrh = new JLabel("Habitants"+habitants);
     public static JProgressBar bar = new JProgressBar();
     public static JLabel Louvriers = new JLabel("Ouvriers disponibles: "+ouvriers);
     public static JLabel MC = new JLabel("Mines à charbon: "+minecharbon);
@@ -226,14 +227,14 @@ public class FenetreDuJeu {
         combo3.addActionListener(new ItemAction3());
         combo3.setForeground(Color.blue);
 
-        String[] Stockage = {"Silo à Charbon 1000$", "Silo à Fer 1000", "Réservoir à Pétrole 2000$", "Coffre à Diamants 8000$", "Bidons de gasoil 500$"};
+        String[] Stockage = {"Silo à Charbon 1000$", "Silo à Fer 1000", "Réservoir à Pétrole 2000$", "Coffre à Diamants 8000$"};
         combo4 = new JComboBox(Stockage);
         combo4.addActionListener(new ItemAction4());
         combo4.setForeground(Color.blue);
 
         Font font = new Font("Tahomas", Font.BOLD, 20);
         nbrh.setFont(font);
-        nbrh.setBounds(740, 13, 200, 30);
+        nbrh.setBounds(730, 0, 150, 61);
         bas.add(nbrh);
 
         acheterouvrier.setBounds(875, 30, 198, 30);
@@ -359,7 +360,7 @@ public class FenetreDuJeu {
                 }
             }
         });
-        temps.setBounds(80, 540, 50, 42);
+        temps.setBounds(80, 540, 50, 60);
         container.add(temps);
         Font police = new Font("Tahomas", Font.BOLD, 20);
         Label1.setFont(police);
@@ -1196,7 +1197,23 @@ public class FenetreDuJeu {
 
     class ItemAction4 implements ActionListener{
         public void actionPerformed(ActionEvent e){
+            if(combo4.getSelectedItem() == "Silo à Charbon 5000$"){
+                if(habitants >= 100 && industries >= 5 && argent == 5000){
 
+                } else if (habitants < 100){
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 100 habitants pour construire une Usine Chimique !", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
+                } else if (industries < 5){
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin d'un minimum de 5 industries !", "Pas assez d'industries", JOptionPane.ERROR_MESSAGE, img);
+                } else if (argent < 5000){
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin de 5000$ pour construire ce batiment !", "Pas assez d'argent", JOptionPane.ERROR_MESSAGE, img);
+                }
+            }
         }
     }
 
