@@ -23,7 +23,7 @@ public class MenuOptions extends JPanel{
         this.color = color;
         this.add(bruh);
 
-        String[] tab = {"1920 x 1080", "1366 x 758", "1280 x 720", "1080 x 620"};
+        String[] tab = {"1920 x 1080", "1366 x 758", "1280 x 720", "1080 x 620", "750 x 480"};
         combo = new JComboBox(tab);
         combo.addActionListener(new comboL());
         this.add(combo);
@@ -56,8 +56,13 @@ public class MenuOptions extends JPanel{
             }
 
             if(combo.getSelectedItem() == "1080 x 620"){
-                MenuPrincipal.f.setSize(200, 200);
+                MenuPrincipal.f.setSize(1080, 620);
                 FenetreDuJeu.f.setSize(1080, 620);
+            }
+
+            if (combo.getSelectedItem() == "750 x 480"){
+                MenuPrincipal.f.setSize(750, 480);
+                FenetreDuJeu.f.setSize(750, 480);
             }
         }
     }
