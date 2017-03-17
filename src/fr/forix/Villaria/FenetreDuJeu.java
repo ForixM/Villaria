@@ -44,7 +44,7 @@ public class FenetreDuJeu {
     public static JLabel magasin = new JLabel("Magasins: "+magasins);
     public static JLabel CentreCommercial = new JLabel("Centre Commercials: "+CC);
     public static JLabel industrie = new JLabel("Industries: "+industries);
-    public static JLabel NB = new JLabel("Nombre et Types de batiments");
+    public static JLabel NB = new JLabel("Batiments:");
     public static JLabel PE = new JLabel("Parc éolien: "+parceolien);
     public static JLabel CCH = new JLabel("Centrales à Charbon: "+centralecharbon);
     public static JLabel CF = new JLabel("Centrales à Fioul: "+centralefioul);
@@ -369,31 +369,6 @@ public class FenetreDuJeu {
         Journée.setBounds(15, 560, 70, 20);
         container.add(Journée);
 
-    }
-
-    class pauseL implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent arg0) {
-            MenuPause p = new MenuPause();
-        }
-    }
-
-    class acheterouvrierL implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (diamants >= 10){
-                diamants -= 10;
-                ouvriers += 1;
-                ouvriermax += 1;
-                diamantL.setText("Diamants: "+diamants);
-                Louvriers.setText("Ouvriers disponibles: "+ouvriers);
-            } else{
-                JOptionPane jop3 = new JOptionPane();
-                ImageIcon img = new ImageIcon("finance-634901_960_720.png");
-                jop3.showMessageDialog(null, "Vous n'avez pas assez de diamants pour pouvoir acheter un ouvrier en plus !", "Pas assez de diamants", JOptionPane.ERROR_MESSAGE, img);
-            }
-        }
     }
 
     public static Thread maisont;
@@ -1197,9 +1172,11 @@ public class FenetreDuJeu {
 
     class ItemAction4 implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            if(combo4.getSelectedItem() == "Silo à Charbon 5000$"){
-                if(habitants >= 100 && industries >= 5 && argent == 5000){
-
+            if(combo4.getSelectedItem() == "Silo à Charbon 1000$"){
+                if(habitants >= 100 && industries >= 5 && argent >= 1000){
+                    silocharbon++;
+                    argent-= 1000;
+                    argentD.setText(argent+" $");
                 } else if (habitants < 100){
                     JOptionPane jop3 = new JOptionPane();
                     ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
@@ -1211,7 +1188,61 @@ public class FenetreDuJeu {
                 } else if (argent < 5000){
                     JOptionPane jop3 = new JOptionPane();
                     ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
-                    jop3.showMessageDialog(null, "Vous avez besoin de 5000$ pour construire ce batiment !", "Pas assez d'argent", JOptionPane.ERROR_MESSAGE, img);
+                    jop3.showMessageDialog(null, "Vous avez besoin de 1000$ pour construire ce batiment !", "Pas assez d'argent", JOptionPane.ERROR_MESSAGE, img);
+                }
+            }
+
+            if (combo4.getSelectedItem() == "Silo à Fer 1000$"){
+                if (habitants >= 200 && industries >= 10 && argent >= 1000){
+
+                } else if (habitants < 200){
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 200 habitants pour construire une Usine Chimique !", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
+                } else if (industries < 10) {
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin d'un minimum de 10 industries !", "Pas assez d'industries", JOptionPane.ERROR_MESSAGE, img);
+                } else if (argent < 1000){
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin de 1000$ pour construire ce batiment !", "Pas assez d'argent", JOptionPane.ERROR_MESSAGE, img);
+                }
+            }
+
+            if (combo4.getSelectedItem() == "Réservoir à Pétrole 2000$"){
+                if (habitants >= 400 && industries >= 30 && argent >= 2000){
+
+                } else if (habitants < 400){
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 400 habitants pour construire une Usine Chimique !", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
+                } else if (industries < 30){
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin d'un minimum de 30 industries !", "Pas assez d'industries", JOptionPane.ERROR_MESSAGE, img);
+                } else if (argent < 2000){
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin de 2000$ pour construire ce batiment !", "Pas assez d'argent", JOptionPane.ERROR_MESSAGE, img);
+                }
+            }
+
+            if (combo4.getSelectedItem() == "Coffre à Diamants 8000$"){
+                if (habitants >= 2000 && industries >= 100 && argent >= 8000){
+
+                } else if (habitants < 2000){
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 2000 habitants pour construire une Usine Chimique !", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
+                } else if (industries < 100){
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin d'un minimum de 100 industries !", "Pas assez d'industries", JOptionPane.ERROR_MESSAGE, img);
+                } else if (argent < 8000){
+                    JOptionPane jop3 = new JOptionPane();
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin de 8000$ pour construire ce batiment !", "Pas assez d'argent", JOptionPane.ERROR_MESSAGE, img);
                 }
             }
         }
