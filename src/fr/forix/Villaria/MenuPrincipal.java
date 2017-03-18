@@ -21,7 +21,7 @@ public class MenuPrincipal {
     private JTextField test = new JTextField();
 
     public MenuPrincipal(){
-        f.setSize(495,339);
+        f.setSize(740,480);
         f.setLocationRelativeTo(null);
         f.setTitle("Villaria");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,6 +37,9 @@ public class MenuPrincipal {
         jeu.setBounds(0, 20, 720, 80);
         jeu.setHorizontalAlignment(JLabel.CENTER);
         container.add(jeu);
+
+        IniMenuOptions mp = new IniMenuOptions();
+        IniMenuOptions.f.setVisible(false);
 
         Jouer.setBounds(190, 200, 150, 75);
         container.add(Jouer);
@@ -99,7 +102,7 @@ public class MenuPrincipal {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            IniMenuOptions mp = new IniMenuOptions();
+            IniMenuOptions.f.setVisible(true);
 
         }
 
