@@ -166,7 +166,7 @@ public class FenetreDuJeu {
 
 
         Ouvriers.setLayout(null);
-        Ouvriers.setBounds(720, 30, 345, 255);
+        Ouvriers.setBounds(720, 30, 355, 255);
         Ouvriers.setBorder(BorderFactory.createLineBorder(Color.MAGENTA));
         Ouvriers.setBackground(Color.MAGENTA);
         container.add(Ouvriers);
@@ -385,6 +385,31 @@ public class FenetreDuJeu {
 
     public static Thread cct;
     public static Thread cct1;
+
+    public static Thread parceolient;
+    public static Thread parceolient1;
+
+    public static Thread centralecharbont;
+    public static Thread centralecharbont1;
+
+    public static Thread centralefioult;
+    public static Thread centralefioult1;
+
+    public static Thread parcsolairet;
+    public static Thread parcsolairet1;
+
+    public static Thread centralenucléairet;
+    public static Thread centralenucléairet1;
+
+    public static Thread chateauet;
+    public static Thread chateauet1;
+
+    public static Thread PSPt;
+    public static Thread PSPt1;
+
+    public static Thread GSPt;
+    public static Thread GSPt1;
+
     private int b = 60;
 
     public void maison(){
@@ -441,6 +466,75 @@ public class FenetreDuJeu {
         revenustotal.setText("Revenus journalier : "+revenustot);
     }
 
+    public void parceolien(){
+        parceolien++;
+        PE.setText("Parcs éolien: "+parceolien);
+        System.out.println(parceolien);
+        argent = argent -1000;
+        System.out.println(argent);
+        argentD.setText(argent+" $");
+    }
+
+    public void centralecharbon(){
+        centralecharbon++;
+        CCH.setText("Centrales à Charbon: "+centralecharbon);
+        argent = argent - 5000;
+        System.out.println(argent);
+        argentD.setText(argent+" $");
+    }
+
+    public void centralefioul(){
+        centralefioul++;
+        CF.setText("Centrales à Fioul: "+centralefioul);
+        argent = argent-15000;
+        argentD.setText(argent+" $");
+    }
+
+    public void parcsolaire(){
+        parcsolaire++;
+        PS.setText("Parcs Solaire: "+parcsolaire);
+        System.out.println(parcsolaire);
+        argent = argent-15000;
+        System.out.println(argent);
+        argentD.setText(argent+" $");
+    }
+
+    public void centralenucleaire(){
+        centralenucleaire++;
+        CN.setText("Centrales Nucléaire: "+centralenucleaire);
+        System.out.println(centralenucleaire);
+        argent = argent-50000;
+        System.out.println(argent);
+        argentD.setText(argent+" $");
+    }
+
+    public void chateau(){
+        chateau++;
+        CHE.setText("Chateaux d'eau: "+chateau);
+        System.out.println(chateau);
+        argent = argent-700;
+        System.out.println(argent);
+        argentD.setText(argent+" $");
+    }
+
+    public void PSP(){
+        STP++;
+        PSP.setText("Petites Stations de Pompage: "+STP);
+        System.out.println(STP);
+        argent = argent-1500;
+        System.out.println(argent);
+        argentD.setText(argent+" $");
+    }
+
+    public void GSP(){
+        STG++;
+        GSP.setText("Grandes Stations de Pompage: "+GSP);
+        System.out.println(STG);
+        argent = argent-5000;
+        System.out.println(argent);
+        argentD.setText(argent+" $");
+    }
+
     class ItemAction implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -453,11 +547,8 @@ public class FenetreDuJeu {
                             maisont = new Thread() {
 
                                 public void run() {
-
-                                    argent -= 500;
                                     ouvriers -= 1;
                                     Louvriers.setText("Ouvriers disponible: " + ouvriers);
-                                    argentD.setText(argent + " $");
 
                                     for (int val = 0; val <= 500; val++) {
                                         bar.setValue(val);
@@ -492,11 +583,8 @@ public class FenetreDuJeu {
 
                                 public void run() {
 
-                                    argent -= 500;
                                     ouvriers -= 1;
                                     Louvriers.setText("Ouvriers disponible: " + ouvriers);
-                                    argentD.setText(argent + " $");
-
                                     for (int val = 0; val <= 500; val++) {
                                         bor.setValue(val);
 
@@ -543,11 +631,8 @@ public class FenetreDuJeu {
 
                                     public void run() {
 
-                                        argent -= 500;
                                         ouvriers -= 1;
                                         Louvriers.setText("Ouvriers disponible: " + ouvriers);
-                                        argentD.setText(argent + " $");
-
                                         for (int val = 0; val <= 500; val++) {
                                             bar.setValue(val);
 
@@ -568,7 +653,6 @@ public class FenetreDuJeu {
                                 immeublet.start();
 
                             } else {
-                                String bruh;
                                 System.out.println("dans le else");
                                 JProgressBar bor = new JProgressBar();
                                 bor.setMinimum(0);
@@ -581,10 +665,8 @@ public class FenetreDuJeu {
 
                                     public void run() {
 
-                                        argent -= 500;
                                         ouvriers -= 1;
                                         Louvriers.setText("Ouvriers disponible: " + ouvriers);
-                                        argentD.setText(argent + " $");
 
                                         for (int val = 0; val <= 500; val++) {
                                             bor.setValue(val);
@@ -595,7 +677,7 @@ public class FenetreDuJeu {
                                                 e.printStackTrace();
                                             }
                                         }
-                                        bar.setValue(0);
+                                        bor.setValue(0);
                                         ouvriers += 1;
                                         Louvriers.setText("Ouvriers disponible: " + ouvriers);
                                         immeuble();
@@ -636,11 +718,8 @@ public class FenetreDuJeu {
 
                                 public void run() {
 
-                                    argent -= 500;
                                     ouvriers -= 1;
                                     Louvriers.setText("Ouvriers disponible: " + ouvriers);
-                                    argentD.setText(argent + " $");
-
                                     for (int val = 0; val <= 500; val++) {
                                         bar.setValue(val);
 
@@ -674,11 +753,8 @@ public class FenetreDuJeu {
 
                                 public void run() {
 
-                                    argent -= 500;
                                     ouvriers -= 1;
                                     Louvriers.setText("Ouvriers disponible: " + ouvriers);
-                                    argentD.setText(argent + " $");
-
                                     for (int val = 0; val <= 500; val++) {
                                         bor.setValue(val);
 
@@ -725,11 +801,8 @@ public class FenetreDuJeu {
 
                                     public void run() {
 
-                                        argent -= 500;
                                         ouvriers -= 1;
                                         Louvriers.setText("Ouvriers disponible: " + ouvriers);
-                                        argentD.setText(argent + " $");
-
                                         for (int val = 0; val <= 500; val++) {
                                             bar.setValue(val);
 
@@ -750,7 +823,6 @@ public class FenetreDuJeu {
                                 cct.start();
 
                             } else {
-                                String bruh;
                                 System.out.println("dans le else");
                                 JProgressBar bor = new JProgressBar();
                                 bor.setMinimum(0);
@@ -763,11 +835,8 @@ public class FenetreDuJeu {
 
                                     public void run() {
 
-                                        argent -= 500;
                                         ouvriers -= 1;
                                         Louvriers.setText("Ouvriers disponible: " + ouvriers);
-                                        argentD.setText(argent + " $");
-
                                         for (int val = 0; val <= 500; val++) {
                                             bor.setValue(val);
 
@@ -818,11 +887,8 @@ public class FenetreDuJeu {
 
                                 public void run() {
 
-                                    argent -= 500;
                                     ouvriers -= 1;
                                     Louvriers.setText("Ouvriers disponible: " + ouvriers);
-                                    argentD.setText(argent + " $");
-
                                     for (int val = 0; val <= 500; val++) {
                                         bar.setValue(val);
 
@@ -842,7 +908,6 @@ public class FenetreDuJeu {
                             usinet.start();
 
                         } else {
-                            String bruh;
                             System.out.println("dans le else");
                             JProgressBar bor = new JProgressBar();
                             bor.setMinimum(0);
@@ -855,11 +920,8 @@ public class FenetreDuJeu {
 
                                 public void run() {
 
-                                    argent -= 500;
                                     ouvriers -= 1;
                                     Louvriers.setText("Ouvriers disponible: " + ouvriers);
-                                    argentD.setText(argent + " $");
-
                                     for (int val = 0; val <= 500; val++) {
                                         bor.setValue(val);
 
@@ -902,33 +964,164 @@ public class FenetreDuJeu {
             System.out.println("ActionListener : action sur " + combo2.getSelectedItem());
 
             if(combo2.getSelectedItem() == "Parc éolien 1000$"){
-                if(argent >= 1000){
-                    parceolien++;
-                    PE.setText("Parcs éolien: "+parceolien);
-                    System.out.println(parceolien);
-                    argent = argent -1000;
-                    System.out.println(argent);
-                    argentD.setText(argent+" $");
-                }
-                else{
-                    System.out.println("Pas assez d'argent");
+                if (argent >= 1000) {
+                    if (ouvriers >= 1) {
+                        if (ouvriermax == ouvriers) {
+                            System.out.println("dans le normal");
+
+                            bar.setVisible(true);
+                            parceolient = new Thread() {
+
+                                public void run() {
+
+                                    ouvriers -= 1;
+                                    Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                    for (int val = 0; val <= 500; val++) {
+                                        bar.setValue(val);
+
+                                        try {
+                                            maisont.sleep(10);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                    bar.setValue(0);
+                                    ouvriers += 1;
+                                    Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                    bar.setVisible(false);
+                                    parceolien();
+                                }
+                            };
+                            parceolient.start();
+
+                        } else {
+                            System.out.println("dans le else");
+                            JProgressBar bor = new JProgressBar();
+                            bor.setMinimum(0);
+                            bor.setMaximum(500);
+                            bor.setBounds(80, b, 250, 20);
+                            b += 30;
+                            Ouvriers.add(bor);
+
+                            parceolient1 = new Thread() {
+
+                                public void run() {
+
+                                    ouvriers -= 1;
+                                    Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                    for (int val = 0; val <= 500; val++) {
+                                        bor.setValue(val);
+
+                                        try {
+                                            maisont.sleep(10);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                    bor.setValue(0);
+                                    ouvriers += 1;
+                                    Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                    parceolien();
+
+                                    bor.setVisible(false);
+                                }
+                            };
+                            parceolient1.start();
+
+                        }
+
+                    } else {
+                        JOptionPane jop3 = new JOptionPane();
+                        ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                        jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
+
+                    }
+                }else{
+                    System.out.println("pas assez d'argent");
                     JOptionPane jop3 = new JOptionPane();
                     ImageIcon img = new ImageIcon("finance-634901_960_720.png");
                     jop3.showMessageDialog(null, "Pas assez d'argent", "Erreur", JOptionPane.ERROR_MESSAGE, img);
                 }
+
             }
 
             if(combo2.getSelectedItem() == "Centrale à Charbon 5000$"){
 
                 if(habitants >= 500){
-                    if(argent >= 5000){
-                        centralecharbon++;
-                        CCH.setText("Centrales à Charbon: "+centralecharbon);
-                        argent = argent - 5000;
-                        System.out.println(argent);
-                        argentD.setText(argent+" $");
-                    }
-                    else{
+                    if (argent >= 5000) {
+                        if (ouvriers >= 1) {
+                            if (ouvriermax == ouvriers) {
+                                System.out.println("dans le normal");
+
+                                bar.setVisible(true);
+                                centralecharbont = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bar.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bar.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        bar.setVisible(false);
+                                        centralecharbon();
+                                    }
+                                };
+                                centralecharbont.start();
+
+                            } else {
+                                System.out.println("dans le else");
+                                JProgressBar bor = new JProgressBar();
+                                bor.setMinimum(0);
+                                bor.setMaximum(500);
+                                bor.setBounds(80, b, 250, 20);
+                                b += 30;
+                                Ouvriers.add(bor);
+
+                                centralecharbont1 = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bor.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bor.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        centralecharbon();
+
+                                        bor.setVisible(false);
+                                    }
+                                };
+                                centralecharbont1.start();
+
+                            }
+
+                        } else {
+                            JOptionPane jop3 = new JOptionPane();
+                            ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                            jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
+
+                        }
+                    }else{
+                        System.out.println("pas assez d'argent");
                         JOptionPane jop3 = new JOptionPane();
                         ImageIcon img = new ImageIcon("finance-634901_960_720.png");
                         jop3.showMessageDialog(null, "Pas assez d'argent", "Erreur", JOptionPane.ERROR_MESSAGE, img);
@@ -942,14 +1135,81 @@ public class FenetreDuJeu {
 
             if(combo2.getSelectedItem() == "Centrale à Fioul 15000$"){
 
-                if(habitants >= 3000){
-                    if(argent >= 15000){
-                        centralefioul++;
-                        CF.setText("Centrales à Fioul: "+centralefioul);
-                        argent = argent-15000;
-                        argentD.setText(argent+" $");
-                    }
-                    else{
+                if(habitants >= 500){
+                    if (argent >= 5000) {
+                        if (ouvriers >= 1) {
+                            if (ouvriermax == ouvriers) {
+                                System.out.println("dans le normal");
+
+                                bar.setVisible(true);
+                                centralecharbont = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bar.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bar.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        bar.setVisible(false);
+                                        centralecharbon();
+                                    }
+                                };
+                                centralecharbont.start();
+
+                            } else {
+                                System.out.println("dans le else");
+                                JProgressBar bor = new JProgressBar();
+                                bor.setMinimum(0);
+                                bor.setMaximum(500);
+                                bor.setBounds(80, b, 250, 20);
+                                b += 30;
+                                Ouvriers.add(bor);
+
+                                centralecharbont1 = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bor.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bor.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        centralecharbon();
+
+                                        bor.setVisible(false);
+                                    }
+                                };
+                                centralecharbont1.start();
+
+                            }
+
+                        } else {
+                            JOptionPane jop3 = new JOptionPane();
+                            ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                            jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
+
+                        }
+                    }else{
+                        System.out.println("pas assez d'argent");
                         JOptionPane jop3 = new JOptionPane();
                         ImageIcon img = new ImageIcon("finance-634901_960_720.png");
                         jop3.showMessageDialog(null, "Pas assez d'argent", "Erreur", JOptionPane.ERROR_MESSAGE, img);
@@ -957,22 +1217,86 @@ public class FenetreDuJeu {
                 }else{
                     JOptionPane jop3 = new JOptionPane();
                     ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
-                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 3000 habitants pour construire une Centrale à Fioul", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
+                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 500 habitants pour construire une Centrale à Charbon", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
                 }
             }
 
             if(combo2.getSelectedItem() == "Parc Solaire 15000$"){
 
-                if(habitants >= 10000){
-                    if(argent >= 15000){
-                        parcsolaire++;
-                        PS.setText("Parcs Solaire: "+parcsolaire);
-                        System.out.println(parcsolaire);
-                        argent = argent-15000;
-                        System.out.println(argent);
-                        argentD.setText(argent+" $");
-                    }
-                    else{
+                if(habitants >= 500){
+                    if (argent >= 5000) {
+                        if (ouvriers >= 1) {
+                            if (ouvriermax == ouvriers) {
+                                System.out.println("dans le normal");
+
+                                bar.setVisible(true);
+                                parcsolairet = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bar.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bar.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        bar.setVisible(false);
+                                        parcsolaire();
+                                    }
+                                };
+                                parcsolairet.start();
+
+                            } else {
+                                System.out.println("dans le else");
+                                JProgressBar bor = new JProgressBar();
+                                bor.setMinimum(0);
+                                bor.setMaximum(500);
+                                bor.setBounds(80, b, 250, 20);
+                                b += 30;
+                                Ouvriers.add(bor);
+
+                                parcsolairet1 = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bor.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bor.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        parcsolaire();
+
+                                        bor.setVisible(false);
+                                    }
+                                };
+                                parcsolairet1.start();
+
+                            }
+
+                        } else {
+                            JOptionPane jop3 = new JOptionPane();
+                            ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                            jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
+
+                        }
+                    }else{
                         System.out.println("pas assez d'argent");
                         JOptionPane jop3 = new JOptionPane();
                         ImageIcon img = new ImageIcon("finance-634901_960_720.png");
@@ -981,22 +1305,86 @@ public class FenetreDuJeu {
                 }else{
                     JOptionPane jop3 = new JOptionPane();
                     ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
-                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 10000 habitants pour construire un Parc Solaire", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
+                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 500 habitants pour construire une Centrale à Charbon", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
                 }
             }
 
             if(combo2.getSelectedItem() == "Centrale Nucléaire 50000$"){
 
-                if(habitants >= 30000){
-                    if(argent >= 50000){
-                        centralenucleaire++;
-                        CN.setText("Centrales Nucléaire: "+centralenucleaire);
-                        System.out.println(centralenucleaire);
-                        argent = argent-50000;
-                        System.out.println(argent);
-                        argentD.setText(argent+" $");
-                    }
-                    else{
+                if(habitants >= 500){
+                    if (argent >= 5000) {
+                        if (ouvriers >= 1) {
+                            if (ouvriermax == ouvriers) {
+                                System.out.println("dans le normal");
+
+                                bar.setVisible(true);
+                                centralenucléairet = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bar.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bar.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        bar.setVisible(false);
+                                        centralenucleaire();
+                                    }
+                                };
+                                centralenucléairet.start();
+
+                            } else {
+                                System.out.println("dans le else");
+                                JProgressBar bor = new JProgressBar();
+                                bor.setMinimum(0);
+                                bor.setMaximum(500);
+                                bor.setBounds(80, b, 250, 20);
+                                b += 30;
+                                Ouvriers.add(bor);
+
+                                centralenucléairet1 = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bor.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bor.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        centralenucleaire();
+
+                                        bor.setVisible(false);
+                                    }
+                                };
+                                centralenucléairet1.start();
+
+                            }
+
+                        } else {
+                            JOptionPane jop3 = new JOptionPane();
+                            ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                            jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
+
+                        }
+                    }else{
                         System.out.println("pas assez d'argent");
                         JOptionPane jop3 = new JOptionPane();
                         ImageIcon img = new ImageIcon("finance-634901_960_720.png");
@@ -1005,39 +1393,173 @@ public class FenetreDuJeu {
                 }else{
                     JOptionPane jop3 = new JOptionPane();
                     ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
-                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 30000 habitants pour construire une Centrale Nucléaire", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
+                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 500 habitants pour construire une Centrale à Charbon", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
                 }
             }
 
             if(combo2.getSelectedItem() == "Chateau d'eau 700$"){
-                if(argent >= 700){
-                    chateau++;
-                    CHE.setText("Chateaux d'eau: "+chateau);
-                    System.out.println(chateau);
-                    argent = argent-700;
-                    System.out.println(argent);
-                    argentD.setText(argent+" $");
-                }
-                else{
-                    System.out.println("pas assez d'argent");
+                if(habitants >= 500){
+                    if (argent >= 5000) {
+                        if (ouvriers >= 1) {
+                            if (ouvriermax == ouvriers) {
+                                System.out.println("dans le normal");
+
+                                bar.setVisible(true);
+                                chateauet = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bar.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bar.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        bar.setVisible(false);
+                                        chateau();
+                                    }
+                                };
+                                chateauet.start();
+
+                            } else {
+                                System.out.println("dans le else");
+                                JProgressBar bor = new JProgressBar();
+                                bor.setMinimum(0);
+                                bor.setMaximum(500);
+                                bor.setBounds(80, b, 250, 20);
+                                b += 30;
+                                Ouvriers.add(bor);
+
+                                chateauet1 = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bor.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bor.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        chateau();
+
+                                        bor.setVisible(false);
+                                    }
+                                };
+                                chateauet1.start();
+
+                            }
+
+                        } else {
+                            JOptionPane jop3 = new JOptionPane();
+                            ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                            jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
+
+                        }
+                    }else{
+                        System.out.println("pas assez d'argent");
+                        JOptionPane jop3 = new JOptionPane();
+                        ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                        jop3.showMessageDialog(null, "Pas assez d'argent", "Erreur", JOptionPane.ERROR_MESSAGE, img);
+                    }
+                }else{
                     JOptionPane jop3 = new JOptionPane();
-                    ImageIcon img = new ImageIcon("finance-634901_960_720.png");
-                    jop3.showMessageDialog(null, "Pas assez d'argent", "Erreur", JOptionPane.ERROR_MESSAGE, img);
+                    ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
+                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 500 habitants pour construire une Centrale à Charbon", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
                 }
             }
 
             if(combo2.getSelectedItem() == "Petite Station de Pompage 1500$"){
 
-                if(habitants >= 3000){
-                    if(argent >= 1500){
-                        STP++;
-                        PSP.setText("Petites Stations de Pompage: "+STP);
-                        System.out.println(STP);
-                        argent = argent-1500;
-                        System.out.println(argent);
-                        argentD.setText(argent+" $");
-                    }
-                    else{
+                if(habitants >= 500){
+                    if (argent >= 5000) {
+                        if (ouvriers >= 1) {
+                            if (ouvriermax == ouvriers) {
+                                System.out.println("dans le normal");
+
+                                bar.setVisible(true);
+                                PSPt = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bar.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bar.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        bar.setVisible(false);
+                                        PSP();
+                                    }
+                                };
+                                PSPt.start();
+
+                            } else {
+                                System.out.println("dans le else");
+                                JProgressBar bor = new JProgressBar();
+                                bor.setMinimum(0);
+                                bor.setMaximum(500);
+                                bor.setBounds(80, b, 250, 20);
+                                b += 30;
+                                Ouvriers.add(bor);
+
+                                PSPt1 = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bor.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bor.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        PSP();
+
+                                        bor.setVisible(false);
+                                    }
+                                };
+                                PSPt1.start();
+
+                            }
+
+                        } else {
+                            JOptionPane jop3 = new JOptionPane();
+                            ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                            jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
+
+                        }
+                    }else{
                         System.out.println("pas assez d'argent");
                         JOptionPane jop3 = new JOptionPane();
                         ImageIcon img = new ImageIcon("finance-634901_960_720.png");
@@ -1046,22 +1568,86 @@ public class FenetreDuJeu {
                 }else{
                     JOptionPane jop3 = new JOptionPane();
                     ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
-                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 3000 habitants pour construire une Petite station de pompage", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
+                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 500 habitants pour construire une Centrale à Charbon", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
                 }
             }
 
             if(combo2.getSelectedItem() == "Grande Station de Pompage 5000$"){
 
-                if(habitants >= 10000){
-                    if(argent >= 5000){
-                        STG++;
-                        GSP.setText("Grandes Stations de Pompage: "+GSP);
-                        System.out.println(STG);
-                        argent = argent-5000;
-                        System.out.println(argent);
-                        argentD.setText(argent+" $");
-                    }
-                    else{
+                if(habitants >= 500){
+                    if (argent >= 5000) {
+                        if (ouvriers >= 1) {
+                            if (ouvriermax == ouvriers) {
+                                System.out.println("dans le normal");
+
+                                bar.setVisible(true);
+                                GSPt = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bar.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bar.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        bar.setVisible(false);
+                                        GSP();
+                                    }
+                                };
+                                GSPt.start();
+
+                            } else {
+                                System.out.println("dans le else");
+                                JProgressBar bor = new JProgressBar();
+                                bor.setMinimum(0);
+                                bor.setMaximum(500);
+                                bor.setBounds(80, b, 250, 20);
+                                b += 30;
+                                Ouvriers.add(bor);
+
+                                GSPt1 = new Thread() {
+
+                                    public void run() {
+
+                                        ouvriers -= 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        for (int val = 0; val <= 500; val++) {
+                                            bor.setValue(val);
+
+                                            try {
+                                                maisont.sleep(10);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                        bor.setValue(0);
+                                        ouvriers += 1;
+                                        Louvriers.setText("Ouvriers disponible: " + ouvriers);
+                                        GSP();
+
+                                        bor.setVisible(false);
+                                    }
+                                };
+                                GSPt1.start();
+
+                            }
+
+                        } else {
+                            JOptionPane jop3 = new JOptionPane();
+                            ImageIcon img = new ImageIcon("finance-634901_960_720.png");
+                            jop3.showMessageDialog(null, "Il n'y a plus d'ouvriers disponible !", "Pas assez d'ouvriers", JOptionPane.ERROR_MESSAGE, img);
+
+                        }
+                    }else{
                         System.out.println("pas assez d'argent");
                         JOptionPane jop3 = new JOptionPane();
                         ImageIcon img = new ImageIcon("finance-634901_960_720.png");
@@ -1070,7 +1656,7 @@ public class FenetreDuJeu {
                 }else{
                     JOptionPane jop3 = new JOptionPane();
                     ImageIcon img = new ImageIcon("/images/finance-634901_960_720.png");
-                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 10000 habitants pour construire une Grande station de pompage", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
+                    jop3.showMessageDialog(null, "Vous avez besoin de minimum 500 habitants pour construire une Centrale à Charbon", "Pas assez d'habitants", JOptionPane.ERROR_MESSAGE, img);
                 }
             }
         }
