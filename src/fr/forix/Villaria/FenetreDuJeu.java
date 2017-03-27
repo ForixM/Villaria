@@ -570,7 +570,6 @@ public class FenetreDuJeu {
                             maisont.start();
 
                         } else {
-                            String bruh;
                             System.out.println("dans le else");
                             JProgressBar bor = new JProgressBar();
                             bor.setMinimum(0);
@@ -599,6 +598,7 @@ public class FenetreDuJeu {
                                     Louvriers.setText("Ouvriers disponible: " + ouvriers);
                                     bor.setVisible(false);
                                     b -= 30;
+                                    Ouvriers.add(bor);
                                     maison();
                                 }
                             };
@@ -682,7 +682,7 @@ public class FenetreDuJeu {
                                         Louvriers.setText("Ouvriers disponible: " + ouvriers);
                                         immeuble();
 
-                                        bar.setVisible(false);
+                                        bor.setVisible(false);
                                     }
                                 };
                                 immeublet1.start();
