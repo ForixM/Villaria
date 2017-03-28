@@ -410,7 +410,7 @@ public class FenetreDuJeu {
     public static Thread GSPt;
     public static Thread GSPt1;
 
-    private int b = 60;
+    private int b = 30;
 
     public void maison(){
         maisons++;
@@ -574,8 +574,9 @@ public class FenetreDuJeu {
                             JProgressBar bor = new JProgressBar();
                             bor.setMinimum(0);
                             bor.setMaximum(500);
-                            bor.setBounds(80, b, 250, 20);
                             b += 30;
+                            bor.setBounds(80, b, 250, 20);
+                            System.out.println(b);
                             Ouvriers.add(bor);
 
                             maisont1 = new Thread() {
@@ -1142,7 +1143,7 @@ public class FenetreDuJeu {
                                 System.out.println("dans le normal");
 
                                 bar.setVisible(true);
-                                centralecharbont = new Thread() {
+                                centralefioult = new Thread() {
 
                                     public void run() {
 
@@ -1161,10 +1162,10 @@ public class FenetreDuJeu {
                                         ouvriers += 1;
                                         Louvriers.setText("Ouvriers disponible: " + ouvriers);
                                         bar.setVisible(false);
-                                        centralecharbon();
+                                        centralefioul();
                                     }
                                 };
-                                centralecharbont.start();
+                                centralefioult.start();
 
                             } else {
                                 System.out.println("dans le else");
@@ -1175,7 +1176,7 @@ public class FenetreDuJeu {
                                 b += 30;
                                 Ouvriers.add(bor);
 
-                                centralecharbont1 = new Thread() {
+                                centralefioult1 = new Thread() {
 
                                     public void run() {
 
@@ -1193,12 +1194,12 @@ public class FenetreDuJeu {
                                         bor.setValue(0);
                                         ouvriers += 1;
                                         Louvriers.setText("Ouvriers disponible: " + ouvriers);
-                                        centralecharbon();
+                                        centralefioul();
 
                                         bor.setVisible(false);
                                     }
                                 };
-                                centralecharbont1.start();
+                                centralefioult1.start();
 
                             }
 
