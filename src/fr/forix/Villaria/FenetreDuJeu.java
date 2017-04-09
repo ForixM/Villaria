@@ -16,7 +16,7 @@ public class FenetreDuJeu {
     public static Long ouvriermax=2L;
 
     public static double diamantsD = 0;
-    public static Long argent = 10000L, nourriture = 500L, habitants = 1000L, charbon=0L, fer=0L, pétrol=0L, diamants=10L, planches=0L, béton=0L;
+    public static Long argent = 1000L, nourriture = 500L, habitants = 0L, charbon=0L, fer=0L, pétrol=0L, diamants=0L, planches=0L, béton=0L;
     public static Long maisons=0L, immeubles=0L, magasins=0L, CC=0L, industries=0L;
     public static Long parceolien=0L, centralecharbon=0L, centralefioul=0L, parcsolaire=0L, centralenucleaire=0L, chateau=0L, STP=0L, STG=0L, ferme=0L;
     public static Long maisonr=50L, immeubler=300L, magasinr=50L, CCr=1000L, industrier=500L;
@@ -56,7 +56,7 @@ public class FenetreDuJeu {
     public static JLabel F = new JLabel("Fermes: "+ferme);
     public static JLabel revenus = new JLabel("Revenus");
     public static JLabel revenustotal = new JLabel("Revenus journalier : "+revenustot);
-    public static JLabel nbrh = new JLabel("Habitants"+habitants);
+    public static JLabel nbrh = new JLabel("Habitants: "+habitants);
     public static JProgressBar bar = new JProgressBar();
     public static JLabel Louvriers = new JLabel("Ouvriers disponibles: "+ouvriers);
     public static JLabel MC = new JLabel("Mines à charbon: "+minecharbon);
@@ -234,7 +234,7 @@ public class FenetreDuJeu {
 
         Font font = new Font("Tahomas", Font.BOLD, 20);
         nbrh.setFont(font);
-        nbrh.setBounds(730, 0, 150, 61);
+        nbrh.setBounds(680, 0, 200, 61);
         bas.add(nbrh);
 
         acheterouvrier.setBounds(875, 30, 198, 30);
@@ -257,7 +257,7 @@ public class FenetreDuJeu {
                 i--;
             }
         }
-        onglet.setBounds(140, 0, 580, 60);
+        onglet.setBounds(90, 0, 540, 60);
         bas.add(onglet);
 
         f.setContentPane(container);
@@ -360,13 +360,13 @@ public class FenetreDuJeu {
                 }
             }
         });
-        temps.setBounds(80, 540, 50, 60);
+        temps.setBounds(0, 575, 80, 25);
         container.add(temps);
         Font police = new Font("Tahomas", Font.BOLD, 20);
         Label1.setFont(police);
         Label1.setBounds(20, 540, 60, 20);
         container.add(Label1);
-        Journée.setBounds(15, 560, 70, 20);
+        Journée.setBounds(15, 555, 70, 20);
         container.add(Journée);
 
     }
@@ -418,6 +418,7 @@ public class FenetreDuJeu {
         maison.setText("Maisons: " + maisons);
         nbrh.setText("Habitants : " + habitants);
         argent -= 500;
+        argentD.setText(argent+" $");
         habitants = habitants + 30;
         rmaison = (maisons * maisonr);
         revenustot = (rmaison + rimmeuble + rmagasin + rCC + rindustrie);
@@ -469,9 +470,7 @@ public class FenetreDuJeu {
     public void parceolien(){
         parceolien++;
         PE.setText("Parcs éolien: "+parceolien);
-        System.out.println(parceolien);
-        argent = argent -1000;
-        System.out.println(argent);
+        argent -=1000;
         argentD.setText(argent+" $");
     }
 
@@ -479,7 +478,6 @@ public class FenetreDuJeu {
         centralecharbon++;
         CCH.setText("Centrales à Charbon: "+centralecharbon);
         argent = argent - 5000;
-        System.out.println(argent);
         argentD.setText(argent+" $");
     }
 
@@ -493,45 +491,35 @@ public class FenetreDuJeu {
     public void parcsolaire(){
         parcsolaire++;
         PS.setText("Parcs Solaire: "+parcsolaire);
-        System.out.println(parcsolaire);
         argent = argent-15000;
-        System.out.println(argent);
         argentD.setText(argent+" $");
     }
 
     public void centralenucleaire(){
         centralenucleaire++;
         CN.setText("Centrales Nucléaire: "+centralenucleaire);
-        System.out.println(centralenucleaire);
         argent = argent-50000;
-        System.out.println(argent);
         argentD.setText(argent+" $");
     }
 
     public void chateau(){
         chateau++;
         CHE.setText("Chateaux d'eau: "+chateau);
-        System.out.println(chateau);
         argent = argent-700;
-        System.out.println(argent);
         argentD.setText(argent+" $");
     }
 
     public void PSP(){
         STP++;
         PSP.setText("Petites Stations de Pompage: "+STP);
-        System.out.println(STP);
         argent = argent-1500;
-        System.out.println(argent);
         argentD.setText(argent+" $");
     }
 
     public void GSP(){
         STG++;
         GSP.setText("Grandes Stations de Pompage: "+GSP);
-        System.out.println(STG);
         argent = argent-5000;
-        System.out.println(argent);
         argentD.setText(argent+" $");
     }
 

@@ -22,7 +22,6 @@ public class Charger {
 
             if (f.exists()) {
 
-                FenetreDuJeu.f.setVisible(false);
                 Object obj = parser.parse(new FileReader("C:/Games/Villaria/sauvegardes/partie1.json"));
                 JSONObject jsonobject = (JSONObject) obj;
 
@@ -55,7 +54,7 @@ public class Charger {
                 FenetreDuJeu.STG = (Long) jsonobject.get("STG");
                 FenetreDuJeu.STP = (Long) jsonobject.get("STP");
 
-                FenetreDuJeu bruh = new FenetreDuJeu();
+
             } else{
                 JOptionPane jop3 = new JOptionPane();
                 ImageIcon img = new ImageIcon("fr/forix/Villaria/ressources/logo-erreur.jpg");
